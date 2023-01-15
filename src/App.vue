@@ -4,12 +4,12 @@ import { store } from './store.js';
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 
-export default{
+export default {
     components: {
         AppHeader,
         AppMain,
     },
-    
+
     data() {
         return {
             store,
@@ -19,7 +19,12 @@ export default{
 </script>
 
 <template>
-
+    <header>
+        <AppHeader />
+    </header>
+    <main>
+        <AppMain />
+    </main>
 </template>
 
 <style lang="scss">
