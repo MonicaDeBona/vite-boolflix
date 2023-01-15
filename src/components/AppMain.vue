@@ -19,7 +19,7 @@ export default {
                 params: {
                     api_key: store.myApiKey,
                     language: "it-IT",
-                    query: 'query'
+                    query: this.store.searchText
                 }
             })
                 .then((response) => {

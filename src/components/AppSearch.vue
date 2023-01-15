@@ -1,23 +1,21 @@
 <script>
 import { store } from '../store.js';
-import AppSearch from './AppSearch.vue'
 
 export default {
-    name: 'AppHeader',
-    components: {
-        AppSearch
-    },
+    name: 'AppSearch',
     data() {
         return {
             store,
         }
-    },
-
+    }
 }
 </script>
 
 <template>
-    <AppSearch />
+    <div>
+        <input type="text" placeholder="Search..." v-model="store.searchText">
+        <button>Search</button>
+    </div>
 </template>
 
 <style lang="scss" scoped>
