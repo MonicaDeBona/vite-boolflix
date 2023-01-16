@@ -11,6 +11,11 @@ export default {
         getImagePath: function (img) {
             return new URL(`../assets/flagsImg/${img}.png`, import.meta.url).href;
         }
+    },
+    data() {
+        return {
+            languagesList: ["en", "de", "fr", "it"]
+        }
     }
 }
 </script>
@@ -20,7 +25,7 @@ export default {
         <h3>{{ movie.title }}</h3>
         <h3>{{ movie.original_title }}</h3>
         <div class="flag">
-            <img v-if="movie.original_language === 'en'" :src="getImagePath(movie.original_language)"
+            <img v-if="languagesList.includes(movie.original_language)" :src="getImagePath(movie.original_language)"
                 :alt="movie.original_language">
             <p v-else>{{ movie.original_language }}</p>
         </div>
