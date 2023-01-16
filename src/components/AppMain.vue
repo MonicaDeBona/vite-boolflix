@@ -1,6 +1,5 @@
 <script>
 import { store } from '../store.js';
-import axios from 'axios';
 import AppMovies from './AppMovies.vue';
 
 export default {
@@ -12,25 +11,7 @@ export default {
         return {
             store,
         }
-    },
-    methods: {
-        getMovies(querySelected) {
-            axios.get(`${store.apiUrl}/movie`, {
-                params: {
-                    api_key: store.myApiKey,
-                    language: "it-IT",
-                    query: querySelected
-                }
-            })
-                .then((response) => {
-                    this.store.moviesList = response.data.results;
-                    console.log(response.data.results)
-                })
-        }
-    },
-    // created() {
-    //     this.getMovies();
-    // }
+    }
 }
 </script>
 
