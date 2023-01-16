@@ -14,7 +14,8 @@ export default {
     },
     data() {
         return {
-            languagesList: ["en", "de", "fr", "it"]
+            languagesList: ["en", "de", "fr", "it"],
+            scaleRating: Math.ceil(this.serie.vote_average / 2)
         }
     }
 }
@@ -30,7 +31,7 @@ export default {
                 :alt="serie.original_language">
             <p v-else>{{ serie.original_language }}</p>
         </div>
-        <p>{{ serie.vote_average }}</p>
+        <p>{{ scaleRating }}</p>
     </div>
 </template>
 
