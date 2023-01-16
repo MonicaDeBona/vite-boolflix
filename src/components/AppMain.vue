@@ -14,12 +14,12 @@ export default {
         }
     },
     methods: {
-        getMovies() {
+        getMovies(querySelected) {
             axios.get(`${store.apiUrl}/movie`, {
                 params: {
                     api_key: store.myApiKey,
                     language: "it-IT",
-                    query: this.store.searchText
+                    query: querySelected
                 }
             })
                 .then((response) => {
@@ -28,9 +28,9 @@ export default {
                 })
         }
     },
-    created() {
-        this.getMovies();
-    }
+    // created() {
+    //     this.getMovies();
+    // }
 }
 </script>
 

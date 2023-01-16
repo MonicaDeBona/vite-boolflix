@@ -15,7 +15,7 @@ export default {
         <h3>{{ movie.title }}</h3>
         <h3>{{ movie.original_title }}</h3>
         <p>{{ movie.original_language }}</p>
-        <p>{{ movie.vote_count }}</p>
+        <p>{{ movie.vote_average }}</p>
     </div>
 </template>
 

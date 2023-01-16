@@ -14,7 +14,7 @@ export default {
 <template>
     <div>
         <input type="text" placeholder="Search..." v-model="store.searchText">
-        <button>Search</button>
+        <button @click="getMovies(store.searchText)">Search</button>
     </div>
 </template>
 
