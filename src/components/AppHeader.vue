@@ -14,12 +14,12 @@ export default {
         }
     },
     methods: {
-        getMovies(movieSelected) {
+        getMovies() {
             axios.get(`${store.apiUrl}/movie`, {
                 params: {
                     api_key: store.myApiKey,
                     language: "it-IT",
-                    query: movieSelected
+                    query: store.searchText
                 }
             })
                 .then((response) => {
@@ -27,12 +27,12 @@ export default {
                     console.log(response.data.results)
                 })
         },
-        getSeries(serieSelected) {
+        getSeries() {
             axios.get(`${store.apiUrl}/tv`, {
                 params: {
                     api_key: store.myApiKey,
                     language: "it-IT",
-                    query: serieSelected
+                    query: store.searchText
                 }
             })
                 .then((response) => {
@@ -40,13 +40,17 @@ export default {
                     console.log(response.data.results)
                 })
         },
+        getItems() {
+            this.getMovies()
+            this.getSeries()
+        }
     },
 
 }
 </script>
 
 <template>
-    <AppSearch @searchMovies="getMovies" @searchSeries="getSeries" />
+    <AppSearch @search="getItems" />
 </template>
 
 <style lang="scss" scoped>
