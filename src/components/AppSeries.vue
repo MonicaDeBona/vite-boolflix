@@ -15,7 +15,7 @@ export default {
     data() {
         return {
             languagesList: ["en", "de", "fr", "it"],
-            scaleRating: Math.ceil(this.serie.vote_average / 2)
+            activeStars: Math.ceil(this.serie.vote_average / 2)
         }
     }
 }
@@ -31,8 +31,8 @@ export default {
                 :alt="serie.original_language">
             <p v-else>{{ serie.original_language }}</p>
         </div>
-        <div>
-            <i v-for="star in scaleRating" :class="'fas fa-star'"></i>
+        <div class="stars">
+            <i v-for="star in 5" :key="star" :class="star < activeStars ? 'fas fa-star' : 'far fa-star'"></i>
         </div>
     </div>
 </template>

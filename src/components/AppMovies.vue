@@ -15,7 +15,7 @@ export default {
     data() {
         return {
             languagesList: ["en", "de", "fr", "it"],
-            scaleRating: Math.ceil(this.movie.vote_average / 2)
+            activeStars: Math.ceil(this.movie.vote_average / 2)
         }
     }
 }
@@ -30,9 +30,10 @@ export default {
             <img v-if="languagesList.includes(movie.original_language)" :src="getImagePath(movie.original_language)"
                 :alt="movie.original_language">
             <p v-else>{{ movie.original_language }}</p>
-            <i :class="'fas fa-star'"></i>
         </div>
-        <p>{{ scaleRating }}</p>
+        <div class="stars">
+            <i v-for="star in 5" :key="star" :class="star < activeStars ? 'fas fa-star' : 'far fa-star'"></i>
+        </div>
     </div>
 </template>
 
