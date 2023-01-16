@@ -1,9 +1,9 @@
 <script>
 // import '../../node_modules/flag-icons/css/flag-icons.min.css';
 export default {
-    name: 'AppMovies',
+    name: 'AppSeries',
     props: {
-        movie: {
+        serie: {
             type: Object,
             required: true
         }
@@ -12,16 +12,16 @@ export default {
 </script>
 
 <template>
-    <div class="movie-card">
-        <h3>{{ movie.title }}</h3>
-        <h3>{{ movie.original_title }}</h3>
-        <p>{{ movie.original_language }}</p>
-        <p>{{ movie.vote_average }}</p>
+    <div class="serie-card">
+        <h3>{{ serie.name }}</h3>
+        <h3>{{ serie.original_name }}</h3>
+        <p>{{ serie.original_language }}</p>
+        <p>{{ serie.vote_average }}</p>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.movie-card {
+.serie-card {
     display: flex;
     flex-direction: column;
     width: calc((100% / 5) - 1rem);

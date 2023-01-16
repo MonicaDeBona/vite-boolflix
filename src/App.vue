@@ -22,7 +22,7 @@ export default {
         <AppHeader />
     </header>
     <main>
-        <AppMain :key="store.searchText" />
+        <AppMain />
     </main>
 </template>
 
