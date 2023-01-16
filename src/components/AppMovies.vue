@@ -22,8 +22,9 @@ export default {
 
 <template>
     <div class="movie-card">
-        <h3>{{ movie.title }}</h3>
-        <h3>{{ movie.original_title }}</h3>
+        <img :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`" :alt="movie.title">
+        <h3 v-if="movie.title != movie.original_title">{{ movie.title }}</h3>
+        <h3 v-else>{{ movie.original_title }}</h3>
         <div class="flag">
             <img v-if="languagesList.includes(movie.original_language)" :src="getImagePath(movie.original_language)"
                 :alt="movie.original_language">

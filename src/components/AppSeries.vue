@@ -22,8 +22,9 @@ export default {
 
 <template>
     <div class="serie-card">
-        <h3>{{ serie.name }}</h3>
-        <h3>{{ serie.original_name }}</h3>
+        <img :src="`https://image.tmdb.org/t/p/w342/${serie.poster_path}`" :alt="serie.name">
+        <h3 v-if="serie.name != serie.original_name">{{ serie.name }}</h3>
+        <h3 v-else>{{ serie.original_name }}</h3>
         <div class="flag">
             <img v-if="languagesList.includes(serie.original_language)" :src="getImagePath(serie.original_language)"
                 :alt="serie.original_language">
