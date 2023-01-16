@@ -30,6 +30,7 @@ export default {
             <img v-if="languagesList.includes(movie.original_language)" :src="getImagePath(movie.original_language)"
                 :alt="movie.original_language">
             <p v-else>{{ movie.original_language }}</p>
+            <i :class="'fas fa-star'"></i>
         </div>
         <p>{{ scaleRating }}</p>
     </div>

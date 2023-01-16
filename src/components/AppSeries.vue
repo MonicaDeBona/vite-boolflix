@@ -31,7 +31,9 @@ export default {
                 :alt="serie.original_language">
             <p v-else>{{ serie.original_language }}</p>
         </div>
-        <p>{{ scaleRating }}</p>
+        <div>
+            <i v-for="star in scaleRating" :class="'fas fa-star'"></i>
+        </div>
     </div>
 </template>
 
