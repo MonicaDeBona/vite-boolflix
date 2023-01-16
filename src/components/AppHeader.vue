@@ -19,7 +19,7 @@ export default {
                 params: {
                     api_key: store.myApiKey,
                     language: "it-IT",
-                    query: store.searchText
+                    query: this.store.searchText
                 }
             })
                 .then((response) => {
@@ -30,9 +30,9 @@ export default {
         getSeries() {
             axios.get(`${store.apiUrl}/tv`, {
                 params: {
-                    api_key: store.myApiKey,
+                    api_key: this.store.myApiKey,
                     language: "it-IT",
-                    query: store.searchText
+                    query: this.store.searchText
                 }
             })
                 .then((response) => {
