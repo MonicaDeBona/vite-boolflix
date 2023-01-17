@@ -3,6 +3,7 @@ import { store } from '../store.js';
 import AppSearch from './AppSearch.vue'
 import axios from 'axios';
 
+
 export default {
     name: 'AppHeader',
     components: {
@@ -14,6 +15,9 @@ export default {
         }
     },
     methods: {
+        getImagePath: function (img) {
+            return new URL(`../assets/imgs/${img}.png`, import.meta.url).href;
+        },
         getMovies() {
             axios.get(`${store.apiUrl}/movie`, {
                 params: {
@@ -56,57 +60,69 @@ export default {
 </script>
 
 <template>
-    <nav class="d-flex align-items-center justify-content-beetween">
-        <div class="logo">
-            <img src="../assets/imgs/logo.svg" alt="">
-        </div>
-        <div class="nav-item">
-            <ul class="d-flex justify-content-beetween">
-                <li>
-                    Home
-                </li>
-                <li>
-                    Movies
-                </li>
-                <li>
-                    Series
-                </li>
-                <li>
-                    Podcast
-                </li>
-                <li>
-                    More
-                </li>
-            </ul>
-        </div>
-        <div class="search">
-            <AppSearch @search="getItems" />
+    <nav>
+        <div class="wrapper d-flex align-items-center justify-content-between">
+            <div class="left-nav d-flex align-items-center">
+                <div class="logo">
+                    <img src="../assets/imgs/logo.svg" alt="">
+                </div>
+                <div class="nav-item">
+                    <ul class="d-flex justify-content-between">
+                        <li>
+                            Home
+                        </li>
+                        <li>
+                            Movies
+                        </li>
+                        <li>
+                            Shows
+                        </li>
+                        <li>
+                            Podcast
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="search">
+                <AppSearch @search="getItems" />
+            </div>
         </div>
     </nav>
+    <div class="jumbo">
+
+    </div>
 </template>
 
 <style lang="scss" scoped>
+@use '../styles/partials/variables' as *;
+
 nav {
     height: 75px;
-    background-color: rgb(109, 108, 108);
-    padding: 1rem;
+    background-color: $nav-color;
+    padding: 1rem 0;
 }
 
-.logo {
-    flex-basis: 35%;
+.logo img {
+    width: 150px;
+    margin-right: 2.5rem;
+}
 
-    img {
-        width: 150px;
+ul li {
+    color: white;
+    padding: 0 1rem;
+    border-left: 2px solid white;
+    text-transform: uppercase;
+    font-size: .9rem;
+    font-weight: bold;
+    transition: color .4s;
+
+    &:hover {
+        color: $main-accent-color;
     }
 }
 
-.nav-item {
-    flex-basis: 30%;
-    color: black
-}
-
-.search {
-    flex-basis: 35%;
-    text-align: end;
+.jumbo {
+    height: 500px;
+    background-color: $main-bg-color;
 }
 </style>

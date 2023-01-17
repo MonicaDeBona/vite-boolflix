@@ -55,10 +55,9 @@ export default {
 <style lang="scss" scoped>
 .movie-card {
     display: flex;
-    flex-direction: column;
     position: relative;
-    width: calc((100% / 5) - 1rem);
-    margin: 1rem .5rem;
+    width: calc((100% / 5) - 2rem);
+    margin: 1rem;
     text-align: center;
 
     .flag img {
@@ -82,12 +81,9 @@ export default {
         width: 100%;
         color: white;
 
-
         h3 {
             font-size: 1.5rem;
         }
-
-
     }
 }
 </style>
