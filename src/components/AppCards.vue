@@ -43,21 +43,22 @@ export default {
         <img v-else :src="getImagePath('poster-not-available')" :alt="cardTitle()" class="card-poster">
         <div class="card-info d-flex f-column" v-if="showCardInfo">
             <h3 v-if="cardTitle() != cardOriginalTitle()">
-                Title: {{ cardTitle() }}
+                TITLE: {{ cardTitle() }}
             </h3>
             <h3>
-                Original title: {{ cardOriginalTitle() }}
+                ORIGINAL TITLE: {{ cardOriginalTitle() }}
             </h3>
             <span>
-                Rating: <i v-for="star in 5" :key="star"
+                RATING: <i v-for="star in 5" :key="star"
                     :class="star < activeStars ? 'fas fa-star' : 'far fa-star'"></i>
             </span>
             <p v-if="card.overview != ''">
-                Overview: {{ card.overview }}
+                OVERVIEW: {{ card.overview }}
             </p>
-            <p v-else>
-                {{ card.original_language }}
-            </p>
+            <div class="flag">
+                <img v-if="languagesList.includes(card.original_language)" :src="getImagePath(card.original_language)"
+                    alt="card.original_language">
+            </div>
         </div>
     </div>
 </template>
@@ -90,10 +91,11 @@ export default {
         left: 0;
         width: 100%;
         color: white;
+        padding: 1rem;
 
 
         h3 {
-            font-size: 1.5rem;
+            padding-bottom: 1rem;
         }
     }
 }
