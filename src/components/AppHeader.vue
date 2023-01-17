@@ -27,7 +27,7 @@ export default {
                 }
             })
                 .then((response) => {
-                    this.store.moviesList = response.data.results;
+                    this.store.cardsList = response.data.results;
                     console.log(response.data.results)
                 })
                 .catch(function (error) {
@@ -43,7 +43,7 @@ export default {
                 }
             })
                 .then((response) => {
-                    this.store.seriesList = response.data.results;
+                    this.store.cardsList = response.data.results;
                     console.log(response.data.results)
                 })
                 .catch(function (error) {
@@ -100,6 +100,9 @@ nav {
     height: 75px;
     background-color: $nav-color;
     padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
 
 .logo img {
@@ -122,7 +125,11 @@ ul li {
 }
 
 .jumbo {
-    height: 500px;
+    height: 800px;
     background-color: $main-bg-color;
+    background-image: url('../assets/imgs/jumbo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 </style>

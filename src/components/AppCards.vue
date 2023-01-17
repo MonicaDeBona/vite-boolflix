@@ -1,8 +1,8 @@
 <script>
 export default {
-    name: 'AppMovies',
+    name: 'AppCards',
     props: {
-        movie: {
+        card: {
             type: Object,
             required: true
         },
@@ -10,12 +10,26 @@ export default {
     methods: {
         getImagePath: function (img) {
             return new URL(`../assets/imgs/${img}.png`, import.meta.url).href;
+        },
+        cardTitle() {
+            if (this.card.title) {
+                return this.card.title
+            } else {
+                return this.card.name
+            }
+        },
+        cardOriginalTitle() {
+            if (this.card.original_title) {
+                return this.card.original_title
+            } else {
+                return this.card.original_name
+            }
         }
     },
     data() {
         return {
             languagesList: ["en", "de", "fr", "it"],
-            activeStars: Math.ceil(this.movie.vote_average / 2),
+            activeStars: Math.ceil(this.card.vote_average / 2),
             showCardInfo: false
         }
     }
@@ -23,38 +37,33 @@ export default {
 </script>
 
 <template>
-    <div class="movie-card">
-        <img v-if="movie.poster_path != null" :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`"
-            :alt="movie.title" class="movie-img" @mouseover="showCardInfo = true" @mouseout="showCardInfo = false">
-        <img v-else :src="getImagePath('poster-not-available')" :alt="movie.title" class="movie-img"
-            @mouseover="showCardInfo = true" @mouseout="showCardInfo = false">
+    <div class="card" @mouseover="showCardInfo = true" @mouseout="showCardInfo = false">
+        <img v-if="card.poster_path != null" :src="`https://image.tmdb.org/t/p/w342/${card.poster_path}`"
+            :alt="cardTitle()" class="card-poster">
+        <img v-else :src="getImagePath('poster-not-available')" :alt="cardTitle()" class="card-poster">
         <div class="card-info d-flex f-column" v-if="showCardInfo">
-            <h3 v-if="movie.title != movie.original_title">
-                Title: {{ movie.title }}
+            <h3 v-if="cardTitle() != cardOriginalTitle()">
+                Title: {{ cardTitle() }}
             </h3>
-            <h3 v-else>
-                Title: {{ movie.original_title }}
+            <h3>
+                Original title: {{ cardOriginalTitle() }}
             </h3>
             <span>
                 Rating: <i v-for="star in 5" :key="star"
                     :class="star < activeStars ? 'fas fa-star' : 'far fa-star'"></i>
             </span>
-            <p v-if="movie.overview != ''">
-                Overview: {{ movie.overview }}
+            <p v-if="card.overview != ''">
+                Overview: {{ card.overview }}
             </p>
-            <div class="flag">
-                <img v-if="languagesList.includes(movie.original_language)" :src="getImagePath(movie.original_language)"
-                    :alt="movie.original_language">
-                <p v-else>
-                    {{ movie.original_language }}
-                </p>
-            </div>
+            <p v-else>
+                {{ card.original_language }}
+            </p>
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.movie-card {
+.card {
     display: flex;
     position: relative;
     width: calc((100% / 5) - 2rem);
@@ -65,13 +74,13 @@ export default {
         width: 40px;
     }
 
-    .movie-img {
+    .card-poster {
         width: 100%;
         opacity: 1;
         transition: opacity .2s ease-in-out;
     }
 
-    &:hover .movie-img {
+    &:hover .card-poster {
         opacity: 0.2;
     }
 
