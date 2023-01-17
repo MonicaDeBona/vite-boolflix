@@ -42,38 +42,36 @@ export default {
             :alt="cardTitle()" class="card-poster">
         <img v-else :src="getImagePath('poster-not-available')" :alt="cardTitle()" class="card-poster">
         <div class="card-info d-flex f-column" v-if="showCardInfo">
-            <h3 v-if="cardTitle() != cardOriginalTitle()">
+            <p v-if="cardTitle() != cardOriginalTitle()">
                 TITLE: {{ cardTitle() }}
-            </h3>
-            <h3>
+            </p>
+            <p>
                 ORIGINAL TITLE: {{ cardOriginalTitle() }}
-            </h3>
-            <span>
+            </p>
+            <span class="flag">
+                <img v-if="languagesList.includes(card.original_language)" :src="getImagePath(card.original_language)"
+                    alt="card.original_language">
+            </span>
+            <p class="rating">
                 RATING: <i v-for="star in 5" :key="star"
                     :class="star < activeStars ? 'fas fa-star' : 'far fa-star'"></i>
-            </span>
+            </p>
             <p v-if="card.overview != ''">
                 OVERVIEW: {{ card.overview }}
             </p>
-            <div class="flag">
-                <img v-if="languagesList.includes(card.original_language)" :src="getImagePath(card.original_language)"
-                    alt="card.original_language">
-            </div>
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
+@use '../styles/partials/variables' as *;
+
 .card {
     display: flex;
     position: relative;
     width: calc((100% / 5) - 2rem);
     margin: 1rem;
     overflow-y: auto;
-
-    .flag img {
-        width: 40px;
-    }
 
     .card-poster {
         width: 100%;
@@ -94,8 +92,15 @@ export default {
         padding: 1rem;
 
 
-        h3 {
+        p {
             padding-bottom: 1rem;
+            font-weight: 500;
+        }
+
+
+        .flag img {
+            width: 40px;
+            margin-bottom: 1rem;
         }
     }
 }

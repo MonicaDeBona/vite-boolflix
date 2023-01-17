@@ -69,16 +69,16 @@ export default {
                 <div class="nav-item">
                     <ul class="d-flex justify-content-between">
                         <li>
-                            Home
+                            <a href="#">Home</a>
                         </li>
                         <li>
-                            Movies
+                            <a href="#">Movies</a>
                         </li>
                         <li>
-                            Shows
+                            <a href="#">Shows</a>
                         </li>
                         <li>
-                            Podcast
+                            <a href="#">Podcast</a>
                         </li>
                     </ul>
                 </div>
@@ -117,10 +117,13 @@ ul li {
     text-transform: uppercase;
     font-size: .9rem;
     font-weight: bold;
-    transition: color .4s;
 
-    &:hover {
-        color: $main-accent-color;
+    a {
+        transition: color .4s;
+
+        &:hover {
+            color: $main-accent-color;
+        }
     }
 }
 
