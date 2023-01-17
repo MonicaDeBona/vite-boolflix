@@ -9,4 +9,30 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: rgb(51, 51, 51);
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-beetween {
+    justify-content: space-between;
+}
+
+.wrapper {
+    width: 90%;
+    margin: auto;
+}
+
+li {
+    list-style-type: none;
 }

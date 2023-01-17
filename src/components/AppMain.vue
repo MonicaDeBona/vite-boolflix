@@ -18,8 +18,8 @@ export default {
 </script>
 
 <template>
-    <div class="container">
-        <div class="cards-container">
+    <div class="wrapper">
+        <div class="cards-container d-flex">
             <AppMovies v-for="movieEl in store.moviesList" :movie="movieEl" :key="movieEl.id" />
             <AppSeries v-for="serieEl in store.seriesList" :serie="serieEl" :key="serieEl.id" />
         </div>
@@ -27,13 +27,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.container {
-    widows: 90%;
-    margin: 0 auto;
-}
-
 .cards-container {
-    display: flex;
     flex-wrap: wrap;
     padding: 2rem;
 }

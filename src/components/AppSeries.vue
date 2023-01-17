@@ -9,7 +9,7 @@ export default {
     },
     methods: {
         getImagePath: function (img) {
-            return new URL(`../assets/flagsImg/${img}.png`, import.meta.url).href;
+            return new URL(`../assets/imgs/${img}.png`, import.meta.url).href;
         }
     },
     data() {
@@ -23,8 +23,10 @@ export default {
 
 <template>
     <div class="serie-card">
-        <img :src="`https://image.tmdb.org/t/p/w342/${serie.poster_path}`" :alt="serie.name">
-        <h3 v-if="serie.name != serie.original_name">{{ serie.name }}</h3>
+        <img v-if="serie.poster_path != null" :src="`https://image.tmdb.org/t/p/w342/${serie.poster_path}`"
+            :alt="serie.name">
+        <img v-else :src="getImagePath('poster-not-available')" :alt="serie.name">
+        <!-- <h3 v-if="serie.name != serie.original_name">{{ serie.name }}</h3>
         <h3 v-else>{{ serie.original_name }}</h3>
         <div class="flag">
             <img v-if="languagesList.includes(serie.original_language)" :src="getImagePath(serie.original_language)"
@@ -33,7 +35,7 @@ export default {
         </div>
         <div class="stars">
             <i v-for="star in 5" :key="star" :class="star < activeStars ? 'fas fa-star' : 'far fa-star'"></i>
-        </div>
+        </div> -->
     </div>
 </template>
 
