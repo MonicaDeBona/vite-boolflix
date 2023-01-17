@@ -51,6 +51,9 @@ export default {
             <span class="flag">
                 <img v-if="languagesList.includes(card.original_language)" :src="getImagePath(card.original_language)"
                     alt="card.original_language">
+                <p v-else class="lang">
+                    {{ card.original_language }}
+                </p>
             </span>
             <p class="rating">
                 RATING: <i v-for="star in 5" :key="star"
@@ -101,6 +104,10 @@ export default {
         .flag img {
             width: 40px;
             margin-bottom: 1rem;
+        }
+
+        .lang {
+            text-transform: uppercase;
         }
     }
 }
