@@ -28,13 +28,20 @@ export default {
             :alt="movie.title" class="movie-img" @mouseover="showCardInfo = true" @mouseout="showCardInfo = false">
         <img v-else :src="getImagePath('poster-not-available')" :alt="movie.title" class="movie-img"
             @mouseover="showCardInfo = true" @mouseout="showCardInfo = false">
-        <div class="card-info d-flex f-column justify-content-center align-content-center" v-if="showCardInfo">
+        <div class="card-info d-flex f-column" v-if="showCardInfo">
             <h3 v-if="movie.title != movie.original_title">
-                {{ movie.title }}
+                Title: {{ movie.title }}
             </h3>
             <h3 v-else>
-                {{ movie.original_title }}
+                Title: {{ movie.original_title }}
             </h3>
+            <span>
+                Rating: <i v-for="star in 5" :key="star"
+                    :class="star < activeStars ? 'fas fa-star' : 'far fa-star'"></i>
+            </span>
+            <p v-if="movie.overview != ''">
+                Overview: {{ movie.overview }}
+            </p>
             <div class="flag">
                 <img v-if="languagesList.includes(movie.original_language)" :src="getImagePath(movie.original_language)"
                     :alt="movie.original_language">
@@ -42,12 +49,6 @@ export default {
                     {{ movie.original_language }}
                 </p>
             </div>
-            <span>
-                <i v-for="star in 5" :key="star" :class="star < activeStars ? 'fas fa-star' : 'far fa-star'"></i>
-            </span>
-            <p>
-                {{ movie.overview }}
-            </p>
         </div>
     </div>
 </template>
@@ -58,7 +59,7 @@ export default {
     position: relative;
     width: calc((100% / 5) - 2rem);
     margin: 1rem;
-    text-align: center;
+    overflow-y: auto;
 
     .flag img {
         width: 40px;
@@ -80,6 +81,7 @@ export default {
         left: 0;
         width: 100%;
         color: white;
+
 
         h3 {
             font-size: 1.5rem;

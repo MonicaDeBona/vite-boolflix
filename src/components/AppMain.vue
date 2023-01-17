@@ -18,19 +18,20 @@ export default {
 </script>
 
 <template>
-    <div class="main-wrapper">
-        <div class="options d-flex justify-content-between">
-            <div class="button">
-                <button>Featured</button>
-                <button>Movie</button>
-                <button>Shows</button>
-            </div>
-            <select name="" id="prova">
-                <option value="1">Prova</option>
-                <option value="2">Prova</option>
-            </select>
+    <div class="options wrapper d-flex justify-content-between">
+        <div class="button">
+            <button>Featured</button>
+            <button>Movie</button>
+            <button>Shows</button>
         </div>
-        <div class="cards-container justify-content-bewtween d-flex">
+        <select name="" id="prova">
+            <option value="1">Prova</option>
+            <option value="2">Prova</option>
+        </select>
+    </div>
+    <div class="main-wrapper">
+
+        <div class="cards-container d-flex">
             <AppMovies v-for="movieEl in store.moviesList" :movie="movieEl" :key="movieEl.id" />
             <AppSeries v-for="serieEl in store.seriesList" :serie="serieEl" :key="serieEl.id" />
         </div>
